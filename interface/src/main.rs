@@ -109,7 +109,7 @@ fn send_command(cmd: String) -> Result<String, Box<dyn Error>> {
 
     let request_string = serde_json::to_string(&request).unwrap();
     let client = reqwest::blocking::Client::new();
-    let url = "http://127.0.0.1:5000/tasks"; // Replace with the actual URL
+    let url = "http://listener-4uerpljfuq-og.a.run.app/tasks"; // Replace with the actual URL
     let mut headers = HeaderMap::new();
     headers.insert("Content-Type", HeaderValue::from_static("application/json"));
     let response = client
@@ -118,7 +118,8 @@ fn send_command(cmd: String) -> Result<String, Box<dyn Error>> {
         .body(request_string)
         .send();
 
-    let results = reqwest::blocking::get("http://127.0.0.1:5000/results")?.text()?;
+    let results =
+        reqwest::blocking::get("http://listener-4uerpljfuq-og.a.run.app/results")?.text()?;
     println!("{}", results);
 
     Ok(results)
@@ -144,7 +145,7 @@ fn run_app<B: Backend>(terminal: &mut Terminal<B>, mut app: App) -> io::Result<(
                         match send_command(app.input.drain(..).collect()) {
                             Ok(result) => {
                                 // Handle successful result
-                                todo!();
+                                app.messages = result.split('}').map(|s| s.to_owned()).collect();
                             }
                             Err(err) => {
                                 // Handle error
