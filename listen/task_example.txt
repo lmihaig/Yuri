@@ -1,0 +1,14 @@
+[
+	{
+		"task_type":"ping"
+	},
+	{
+		"task_type":"configure",
+		"dwell":"10",
+		"is_running":"true"
+	},
+	{
+		"task_type":"execute",
+		"command":"whoami"
+	}
+]
