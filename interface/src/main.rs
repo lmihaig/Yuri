@@ -145,7 +145,8 @@ fn run_app<B: Backend>(terminal: &mut Terminal<B>, mut app: App) -> io::Result<(
                         match send_command(app.input.drain(..).collect()) {
                             Ok(result) => {
                                 // Handle successful result
-                                app.messages = result.split('}').map(|s| s.to_owned()).collect();
+                                app.messages =
+                                    result.split('}').map(|s| s.to_owned()).rev().collect();
                             }
                             Err(err) => {
                                 // Handle error
